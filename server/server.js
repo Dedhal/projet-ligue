@@ -2,7 +2,8 @@ require('dotenv').config()
 const express = require('express')
 let cors = require('cors')
 
-const Ligue = require('./routes/api/ligue')
+const Ligue = require('./routes/api/Ligue')
+const Users = require('./routes/api/Users')
 
 const app = express()
 
@@ -14,7 +15,8 @@ app.use(cors())
 connectDB()
 
 app.use('/api/ligue', Ligue)
+app.use('/api/users', Users)
 
-app.listen(3000, () => {
-    console.log("Server started on port 3000")
+app.listen(5000, () => {
+    console.log("Server started on port 5000")
 })
