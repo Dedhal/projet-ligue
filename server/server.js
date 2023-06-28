@@ -20,7 +20,8 @@ app.use(bodyParser.urlencoded({
 connectDB()
 
 app.use('/api/ligue', Ligue)
+app.use('/api/Users', Users)
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log("Server started on port 3000")
 })
