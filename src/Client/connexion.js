@@ -14,11 +14,11 @@ const Connexion = () => {
             <form onSubmit={handleConnexion}>
               <label>
                 Email
-                <input type='email' value={nom} onChange={(e) => setEmail(e.target.value)}/>
+                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
               </label>
               <label>
                 Mot de passe
-                <input type='password' value={nom} onChange={(e) => setMotdePasse(e.target.value)}/>
+                <input type='password' value={motdePasse} onChange={(e) => setMotdePasse(e.target.value)}/>
               </label>
               <button type="submit">Se connecter</button>
             </form>
@@ -26,4 +26,4 @@ const Connexion = () => {
     );
 };
 
-export default Inscription;
+export default Connexion;

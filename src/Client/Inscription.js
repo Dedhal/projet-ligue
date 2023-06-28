@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 const Inscription = () => {
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
+    const [login, setLogin] = useState('');
     const [email, setEmail] = useState('');
     const [motdePasse, setMotdePasse] = useState('');
 
@@ -16,19 +15,15 @@ const Inscription = () => {
             <form onSubmit={handleIoninscription}>
               <label>
                 Nom : 
-                <input type='text' value={nom} onChange={(e) => setNom(e.target.value)}/>
-              </label>
-              <label>
-                Prenom : 
-                <input type='text' value={nom} onChange={(e) => setPrenom(e.target.value)}/>
+                <input type='text' value={login} onChange={(e) => setLogin(e.target.value)}/>
               </label>
               <label>
                 email
-                <input type='email' value={nom} onChange={(e) => setEmail(e.target.value)}/>
+                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
               </label>
               <label>
                 motdePasse
-                <input type='password' value={nom} onChange={(e) => setMotdePasse(e.target.value)}/>
+                <input type='password' value={motdePasse} onChange={(e) => setMotdePasse(e.target.value)}/>
               </label>
               <button type="submit">S'inscrire</button>
             </form>
