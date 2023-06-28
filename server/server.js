@@ -4,6 +4,7 @@ let cors = require('cors')
 const bodyParser = require('body-parser')
 
 const Ligue = require('./routes/api/ligue')
+const Users = require('./routes/api/Users')
 
 const app = express()
 
