@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 let cors = require('cors')
+const bodyParser = require('body-parser')
 
 const Ligue = require('./routes/api/ligue')
 
@@ -10,6 +11,10 @@ const connectDB = require('./db/conn')
 
 app.use(express.json())
 app.use(cors())
+
+app.use(bodyParser.urlencoded({ 
+     extended: true 
+}));
 
 connectDB()
 
