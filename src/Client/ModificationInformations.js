@@ -1,35 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Inscription = () => {
+const ModificationInformations = () => {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [motdePasse, setMotdePasse] = useState('');
 
-  const handleInscription = (e) => {
+  const handleModificationInformations = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
 
     axios
-      .post('http://localhost:5000/api/users/', {
+      .put('http://localhost:5000/api/users/', {
         login: login,
         email: email,
         password: motdePasse,
-        role: 0,
       })
       .then(function (response) {
         console.log(response);
-        // Gérer l'inscription réussie ici
+        // Gérer la modification réussie ici
       })
       .catch(function (error) {
         console.log(error);
-        // Gérer l'erreur d'inscription ici
+        // Gérer l'erreur de modification ici
       });
   };
 
   return (
     <div>
-      <h1>Inscription</h1>
-      <form onSubmit={handleInscription}>
+      <h1>Modification des informations personnelles</h1>
+      <form onSubmit={handleModificationInformations}>
         <label>
           Nom :
           <input type="text" name="login" value={login} onChange={(e) => setLogin(e.target.value)} />
@@ -47,10 +46,10 @@ const Inscription = () => {
             onChange={(e) => setMotdePasse(e.target.value)}
           />
         </label>
-        <button type="submit">S'inscrire</button>
+        <button type="submit">Modifier mes informations</button>
       </form>
     </div>
   );
 };
 
-export default Inscription;
+export default ModificationInformations;

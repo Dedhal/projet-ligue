@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
-import RechercheProduits from './RechercheProduit';
+import RechercheProduit from './RechercheProduit';
 
 const ListeProduits = () => {
   const [produits, setProduits] = useState([]);
 
   useEffect(() => {
-  const fetchProduits = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/produits');
-      const data = await response.json();
-      setProduits(data);
-    } catch (error) {
-      console.error('Erreur lors de la récupération des produits:', error);
-    }
-  };
-  fetchProduits();
-}, []);
+    const fetchProduits = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/produits');
+        const data = await response.json();
+        setProduits(data);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des produits:', error);
+      }
+    };
+    fetchProduits();
+  }, []);
 
   return (
     <div>
-    <div>
-        <RechercheProduits />
-    </div>
+      <div>
+        <RechercheProduit />
+      </div>
       <div>
         {produits.map((produit) => (
           <div key={produit._id}>
