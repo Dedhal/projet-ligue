@@ -3,7 +3,7 @@ const express = require('express')
 let cors = require('cors')
 const bodyParser = require('body-parser')
 
-const Ligue = require('./routes/api/ligue')
+const Produits = require('./routes/api/produits')
 const Users = require('./routes/api/Users')
 
 const app = express()
@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({
 
 connectDB()
 
-app.use('/api/ligue', Ligue)
+app.use('/api/produits', Produits)
 app.use('/api/Users', Users)
 
 app.listen(5000, () => {
-    console.log("Server started on port 3000")
+    console.log("Server started on port 5000")
 })

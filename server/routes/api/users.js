@@ -8,13 +8,13 @@ router.get('/test', (req, res) => res.send('Users route testing!'))
 router.get('/', (req, res) => {
     Users.find()
         .then(user => res.json(user))
-        .catch(err => res.status(404).json({ noquestionsfound: 'No Users found' }))
+        .catch(err => res.status(404).json({ error: 'No Users found' }))
 })
 
 router.get('/:id', (req, res) => {
     Users.findById(req.params.id)
         .then(user => res.json(user))
-        .catch(err => res.status(404).json({ noquestionsfound: 'No Users found' }))
+        .catch(err => res.status(404).json({ error: 'No Users found' }))
 })
 
 router.post('/', (req, res) => {

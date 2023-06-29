@@ -6,7 +6,7 @@ const ListeProduits = () => {
     useEffect(() => {
   const fetchProduits = async () => {
     try {
-      const response = await fetch('/api/produits');
+      const response = await fetch('http://localhost:5000/api/produits');
       const data = await response.json();
       setProduits(data);
     } catch (error) {
