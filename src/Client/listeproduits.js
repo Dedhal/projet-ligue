@@ -18,16 +18,15 @@ const ListeProduits = () => {
 
   return (
     <div>
-      <h1>Liste des produits</h1>
-      <ul>
+      <div>
         {produits.map((produit) => (
-          <li key={produit.id}>
+          <div key={produit._id}>
             <h3>{produit.nom}</h3>
             <p>Prix : {produit.prix}</p>
             <p>Description : {produit.description}</p>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

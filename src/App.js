@@ -1,13 +1,23 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import Header from './Client/Header';
 import ListeProduits from './Client/listeproduits';
+import Connexion from './Client/connexion';
+import Inscription from './Client/Inscription';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <h1> Ligue sportive </h1>
-       <ListeProduits />
+       <Header />
+       <Routes>
+           <Route path="/" element={<ListeProduits />} />
+           <Route path="/connexion" element={<Connexion />} />
+           <Route path="/inscription" element={<Inscription />} />
+       </Routes>
        </header>
     </div>
   );
