@@ -6,7 +6,8 @@ const Users = require('../../models/users')
 router.get('/test', (req, res) => res.send('Users route testing!'))
 
 router.get('/', (req, res) => {
-    Users.find()
+    console.log(req.query)
+    Users.find(req.query)
         .then(user => res.json(user))
         .catch(err => res.status(404).json({ error: 'No Users found' }))
 })

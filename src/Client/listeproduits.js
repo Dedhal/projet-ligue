@@ -5,7 +5,7 @@ import RechercheProduits from './RechercheProduit';
 const ListeProduits = () => {
   const [produits, setProduits] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
   const fetchProduits = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/produits');
