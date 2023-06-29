@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 
+import axios from 'axios';
+
 const Panier = () => {
   const [panier, setPanier] = useState([]);
 
+  axios.defaults.headers.common['Authorization'] = sessionStorage.token;
+
   const handleConfirmerPanier = () => {
     // Vous pouvez utiliser la méthode POST pour envoyer la demande avec les données du panier
+
     fetch('/api/confirmer-panier', {
       method: 'POST',
       headers: {

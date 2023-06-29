@@ -1,10 +1,13 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
 import Header from './Client/Header';
-import ListeProduits from './Client/listeproduits';
-import Connexion from './Client/connexion';
-import Inscription from './Client/Inscription';
+
+import ListeProduits from "./Client/listeproduits";
+import Connexion from "./Client/connexion";
+import Inscription from "./Client/Inscription";
+ 
+
 
 import './App.css';
 
@@ -12,13 +15,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <Header />
+
+        <Header />
+
        <Routes>
-           <Route path="/" element={<ListeProduits />} />
+           <Route exact path="/" element={<ListeProduits />} />
            <Route path="/connexion" element={<Connexion />} />
            <Route path="/inscription" element={<Inscription />} />
        </Routes>
        </header>
+
     </div>
   );
 }

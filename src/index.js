@@ -6,10 +6,14 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
 
+import { history } from './Helpers/history';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <React.StrictMode>
-    <BrowserRouter>
+    
+    <BrowserRouter history={history}>
         <App />
     </BrowserRouter>
   </React.StrictMode>

@@ -1,11 +1,13 @@
 const express = require('express')
+const Auth = require('../../helpers/auth')
 const router = express.Router()
 
 const Produits = require('../../models/Produits')
 
 router.get('/test', (req, res) => res.send('Produits route testing!'))
 
-router.get('/', (req, res) => {
+router.get('/', Auth, (req, res) => {
+    console.log(req)
     Produits.find()
         .then(produit => res.json(produit))
         .catch(err => res.status(404).json({ error: 'No Product found' }))

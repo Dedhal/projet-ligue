@@ -1,7 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
+const Auth = require('../../helpers/auth')
 const Users = require('../../models/users')
+
+const Login = require('../../helpers/login')
+
+console.log(typeof(Auth))
 
 router.get('/test', (req, res) => res.send('Users route testing!'))
 
@@ -19,9 +24,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    Users.create(req.body)
-        .then(user => res.json({ msg: 'User added successfully' }))
-        .catch(err => res.status(400).json({ error: 'Unable to add this User' }))
+    Login.Signup(req, res)
 })
 
 router.put('/:id', (req, res) => {
@@ -40,5 +43,7 @@ router.delete('/', (req, res) => {
             res.status(400).json({ error: 'Unable to delete Users' })
         )
 })
+
+router.post('/login', function (req, res) { Login.Login(req, res) })
 
 module.exports = router

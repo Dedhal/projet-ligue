@@ -4,7 +4,7 @@ let cors = require('cors')
 const bodyParser = require('body-parser')
 
 const Produits = require('./routes/api/produits')
-const Users = require('./routes/api/Users')
+const Users = require('./routes/api/users')
 
 const app = express()
 
@@ -21,6 +21,7 @@ connectDB()
 
 app.use('/api/produits', Produits)
 app.use('/api/Users', Users)
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000")

@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
 
+import axios from 'axios';
+
 import RechercheProduits from './RechercheProduit';
 
 const ListeProduits = () => {
   const [produits, setProduits] = useState([]);
 
+  axios.defaults.headers.common['Authorization'] = sessionStorage.token;
+
   useEffect(() => {
-  const fetchProduits = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/produits');
-      const data = await response.json();
-      setProduits(data);
-    } catch (error) {
-      console.error('Erreur lors de la récupération des produits:', error);
-    }
-  };
-  fetchProduits();
-}, []);
+      axios.get('http://localhost:5000/api/produits')
+        .then(function (response) {
+            setProduits(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }, []);
+
+
+
 
   return (
     <div>
