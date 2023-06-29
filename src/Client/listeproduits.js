@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import RechercheProduits from './RechercheProduit';
+
 const ListeProduits = () => {
   const [produits, setProduits] = useState([]);
 
@@ -18,6 +20,9 @@ const ListeProduits = () => {
 
   return (
     <div>
+    <div>
+        <RechercheProduits />
+    </div>
       <div>
         {produits.map((produit) => (
           <div key={produit._id}>
