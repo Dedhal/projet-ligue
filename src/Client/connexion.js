@@ -18,7 +18,7 @@ const Connexion = () => {
         console.log(error);
         // Gérer l'erreur de connexion ici
       });
-  };
+  }; 
 
   return (
     <div>
