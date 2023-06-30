@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import decodeToken from '../Helpers/decodeToken';
+
 const GestionUsers = () => {
   const [users, setUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -90,6 +92,8 @@ const GestionUsers = () => {
   };
 
   return (
+      <>
+      {decodeToken().role === 1 && (
     <div>
       <h2>Gestion des utilisateurs</h2>
       <ul>
@@ -118,6 +122,8 @@ const GestionUsers = () => {
         <button onClick={supprimerUsers}>Supprimer les utilisateurs sélectionnés</button>
       )}
     </div>
+    )}
+    </>
   );
 };
 

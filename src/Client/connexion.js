@@ -11,7 +11,7 @@ const Connexion = () => {
     const handleConnexion = () => {
         axios.post('http://localhost:5000/api/Users/login/', { params : { 'email' : email, 'password' : motdePasse} })
             .then(function (response) {
-                console.log(response);
+                
                 sessionStorage.setItem("token", response.data.token);
             })
             .catch(function (error) {

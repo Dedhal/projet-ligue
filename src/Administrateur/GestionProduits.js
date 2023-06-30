@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import decodeToken from '../Helpers/decodeToken';
+
 const GestionProduits = () => {
   const [produits, setProduits] = useState([]);
   const [nouveauProduit, setNouveauProduit] = useState({
@@ -10,17 +12,20 @@ const GestionProduits = () => {
   });
   const [produitsSelectionnes, setProduitsSelectionnes] = useState([]);
 
+  axios.defaults.headers.common['Authorization'] = sessionStorage.token;
+
   useEffect(() => {
     fetchProduits();
   }, []);
 
   const fetchProduits = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/produits');
-      setProduits(response.data);
-    } catch (error) {
-      console.error('Erreur lors de la récupération des produits:', error);
-    }
+    axios.get('http://localhost:5000/api/produits')
+        .then(function (response) {
+            setProduits(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
   };
 
   const ajouterProduit = async () => {
@@ -80,7 +85,10 @@ const GestionProduits = () => {
   };
 
   return (
-    <div>
+      
+    <>
+    { decodeToken().role === 1 && (
+        <div>
       <h2>Gestion des produits</h2>
       <ul>
         {produits.map((produit) => (
@@ -129,7 +137,11 @@ const GestionProduits = () => {
         />
         <button type="submit">Ajouter</button>
       </form>
-    </div>
+      </div>
+     )}
+     </>
+    
+    
   );
 };
 

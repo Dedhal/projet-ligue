@@ -64,7 +64,7 @@ exports.Login = async (req, res) => {
 
     delete userData.password
 
-    console.log(token)
+    //console.log(token)
 
     return res.json({token})
 
