@@ -9,6 +9,7 @@ const GestionProduits = () => {
     prix: 0,
   });
   const [produitsSelectionnes, setProduitsSelectionnes] = useState([]);
+  const [produitModifie, setProduitModifie] = useState(null);
 
   useEffect(() => {
     fetchProduits();
@@ -78,6 +79,23 @@ const GestionProduits = () => {
       console.error('Erreur lors de la suppression des produits:', error);
     }
   };
+  
+  const modifierProduitMode = (produit) => {
+    setProduitModifie(produit);
+  };
+
+  const annulerModification = () => {
+    setProduitModifie(null);
+  };
+
+  const enregistrerModification = async (produitId, updatedProduit) => {
+    try {
+      await modifierProduit(produitId, updatedProduit);
+      setProduitModifie(null);
+    } catch (error) {
+      console.error('Erreur lors de la modification du produit:', error);
+    }
+  };
 
   return (
     <div>
@@ -85,15 +103,38 @@ const GestionProduits = () => {
       <ul>
         {produits.map((produit) => (
           <li key={produit._id}>
-            <input
-              type="checkbox"
-              checked={produitsSelectionnes.includes(produit._id)}
-              onChange={() => toggleSelectionProduit(produit._id)}
-            />
-            {produit.nom} - {produit.description} - {produit.prix}
-            <button onClick={() => supprimerProduit(produit._id)}>Supprimer</button>
-            <button onClick={(e) => modifierProduit(produit.id, { ...produit, prix: e.target.value })}>Modifier</button>
-
+           {produitModifie && produitModifie._id === produit._id ? (
+      <div>
+        <input
+          type="text"
+          value={produitModifie.nom}
+          onChange={(e) => setProduitModifie({ ...produitModifie, nom: e.target.value })}
+        />
+        <input
+          type="text"
+          value={produitModifie.description}
+          onChange={(e) => setProduitModifie({ ...produitModifie, description: e.target.value })}
+        />
+        <input
+          type="number"
+          value={produitModifie.prix}
+          onChange={(e) => setProduitModifie({ ...produitModifie, prix: e.target.value })}
+        />
+        <button onClick={() => enregistrerModification(produit._id, produitModifie)}>Enregistrer</button>
+        <button onClick={annulerModification}>Annuler</button>
+      </div>
+    ) : (
+      <div>
+        <input
+          type="checkbox"
+          checked={produitsSelectionnes.includes(produit._id)}
+          onChange={() => toggleSelectionProduit(produit._id)}
+        />
+        {produit.nom} - {produit.description} - {produit.prix}
+        <button onClick={() => supprimerProduit(produit._id)}>Supprimer</button>
+        <button onClick={() => modifierProduitMode(produit)}>Modifier</button>
+      </div>
+    )}
           </li>
         ))}
       </ul>
@@ -103,7 +144,6 @@ const GestionProduits = () => {
           <button onClick={supprimerProduitsSelectionnes}>Supprimer les produits sélectionnés</button>
         </div>
       )}
-
       <h3>Ajouter un produit</h3>
       <form onSubmit={(e) => {
         e.preventDefault();
