@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Connexion = () => {
-    const [email, setEmail] = useState('');
-    const [motdePasse, setMotdePasse] = useState('');
+  const [email, setEmail] = useState('');
+  const [motdePasse, setMotdePasse] = useState('');
 
     axios.defaults.headers.common['Authorization'] = sessionStorage.token;
 

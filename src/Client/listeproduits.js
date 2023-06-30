@@ -24,9 +24,9 @@ const ListeProduits = () => {
 
   return (
     <div>
-    <div>
-        <RechercheProduits />
-    </div>
+      <div>
+        <RechercheProduit />
+      </div>
       <div>
         {produits.map((produit) => (
           <div key={produit._id}>
