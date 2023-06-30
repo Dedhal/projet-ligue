@@ -18,8 +18,9 @@ const Panier = () => {
         response.data.map((produit) => {
             if(localStorage.getItem(produit._id)){
                 tmp = [...tmp, {id: produit._id, nom: produit.nom, prix: produit.prix, quantite: localStorage.getItem(produit._id)}]
-                
+                return true;
             }
+            return false;
         })
 
         setPanier(tmp)
