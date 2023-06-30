@@ -16,7 +16,7 @@ const GestionProduits = () => {
 
   const fetchProduits = async () => {
     try {
-      const response = await axios.get('http://localhost:5000//api/produits');
+      const response = await axios.get('http://localhost:5000/api/produits');
       setProduits(response.data);
     } catch (error) {
       console.error('Erreur lors de la récupération des produits:', error);
@@ -40,7 +40,7 @@ const GestionProduits = () => {
 
   const modifierProduit = async (produitId, updatedProduit) => {
     try {
-      const response = await axios.put(`http://localhost:5000//api/produits/${produitId}`, updatedProduit);
+      const response = await axios.put(`http://localhost:5000/api/produits/${produitId}`, updatedProduit);
       console.log('Produit modifié:', response.data);
       fetchProduits();
     } catch (error) {
@@ -50,7 +50,7 @@ const GestionProduits = () => {
 
   const supprimerProduit = async (produitId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000//api/produits/${produitId}`);
+      const response = await axios.delete(`http://localhost:5000/api/produits/${produitId}`);
       console.log('Produit supprimé:', response.data);
       fetchProduits();
     } catch (error) {
@@ -68,7 +68,7 @@ const GestionProduits = () => {
 
   const supprimerProduitsSelectionnes = async () => {
     try {
-      const response = await axios.delete('http://localhost:5000//api/produits', {
+      const response = await axios.delete('http://localhost:5000/api/produits', {
         data: produitsSelectionnes,
       });
       console.log('Produits supprimés:', response.data);

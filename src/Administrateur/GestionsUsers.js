@@ -105,9 +105,9 @@ const GestionUsers = () => {
             ) : (
               <div>
                 <input type="checkbox" checked={selectedUsers.includes(user._id)} onChange={() => toggleUserSelection(user._id)} />
-                {user.email} {user.login} - Droits : {user.role}
-                <button onClick={() => gererDroits(user._id, '1')}>Donner droits administrateur</button>
-                <button onClick={() => gererDroits(user._id, '0')}>Donner droits utilisateur</button>
+                {user.email} {user.login} - Droits : {user.role === '1' ? 'Administrateur' : 'Utilisateur'}
+                <button onClick={() => gererDroits(user._id, user.role === '1' ? '0' : '1')}>
+                {user.role === '1' ? 'Donner droits utilisateur' : 'Donner droits administrateur'}</button>
                 <button onClick={() => modifierUser(user._id)}>Modifier</button>
               </div>
             )}
