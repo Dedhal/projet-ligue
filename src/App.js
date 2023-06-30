@@ -8,21 +8,31 @@ import Inscription from './Client/Inscription';
 import ListeProduits from './Client/listeproduits';
 import ModificationInformations from './Client/ModificationInformations';
 import Panier from './Client/Pannier';
+import GestionsUsers from './Administrateur/GestionsUsers';
+import GestionProduits from './Administrateur/GestionProduits';
 
 const App = () => {
   const utilisateurConnecte = true; // Mettre à jour cette valeur en fonction de l'état de connexion de l'utilisateur
   return (
-    <Router>
+    
       <div className="App">
-        <Header utilisateurConnecte={utilisateurConnecte} />
-        <Route exact path="/" component={Accueil} />
-        <Route exact path="/connexion" component={Connexion} />
-        <Route exact path="/inscription" component={Inscription} />
-        <Route exact path="/produits" component={ListeProduits} />
-        <Route exact path="/modification-informations" component={ModificationInformations} />
-        <Route exact path="/panier" component={Panier} />
-      </div>
-    </Router>
+
+      <Header utilisateurConnecte={utilisateurConnecte} />
+
+      <Routes>
+        
+        <Route exact path="/" element={<Accueil />} />
+        <Route exact path="/connexion" element={<Connexion />} />
+        <Route exact path="/inscription" element={<Inscription />} />
+        <Route exact path="/produits" element={<ListeProduits />} />
+        <Route exact path="/modification-informations" element={<ModificationInformations />} />
+        <Route exact path="/panier" element={<Panier />} />
+        <Route exact path="/admin/users" element={<GestionsUsers />} />
+        <Route exact path="/admin/produits" element={<GestionProduits />} />
+
+    </Routes>
+
+    </div>
   );
 };
 
