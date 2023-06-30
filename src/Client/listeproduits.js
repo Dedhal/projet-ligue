@@ -55,7 +55,6 @@ const ListeProduits = () => {
         console.log(produitId);
         console.log(e.target.quantite.value);
 
-
         localStorage.setItem(produitId, e.target.quantite.value);
         }
 
