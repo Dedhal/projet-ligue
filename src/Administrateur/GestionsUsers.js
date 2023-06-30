@@ -21,7 +21,7 @@ const GestionUsers = () => {
 
   const supprimerUsers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/users/', {
+      const response = await fetch('http://localhost:5000/api/Users/', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const GestionUsers = () => {
 
   const gererDroits = async (userId, roles) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+      const response = await fetch(`http://localhost:5000/api/Users/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const GestionUsers = () => {
 
   const enregistrerModification = async (userId, emailModifie, roleModifie) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+      const response = await fetch(`http://localhost:5000/api/Users/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
