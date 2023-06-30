@@ -30,6 +30,8 @@ const ListeProduits = () => {
                     q.quantite = e.target.value;
                     return null;
                 }
+
+                return null;
             })
 
             setQuantite([...quantite, {id: e.target.value}])

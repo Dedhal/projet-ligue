@@ -7,6 +7,22 @@ const Panier = () => {
   const [prixTotal, setPrixTotal] = useState(0); // Ajout de l'état pour le prix total du panier
 
   useEffect(() => {
+    axios.get('http://localhost:5000/api/produits')
+    .then(function(response) { 
+        console.log(response.data) 
+        response.data.map((produit) => {
+            if(localStorage.getItem(produit._id)){
+                setPanier([...panier, {id: produit._id, nom: produit.nom, prix: produit.prix, quantite: localStorage.getItem(produit._id)}])
+                return true;
+            }
+            return false;
+        })
+    }).catch();
+  }, [])
+
+
+  useEffect(() => {
+
     // Calcul du prix total à partir du panier
     const calculerPrixTotal = () => {
       let total = 0;
@@ -22,27 +38,12 @@ const Panier = () => {
   axios.defaults.headers.common['Authorization'] = sessionStorage.token;
 
   const handleConfirmerPanier = () => {
-    // Envoi du panier au backend pour confirmation
-    fetch('http://localhost:5000/api/confirmer-panier', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(panier),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Réponse du backend:', data);
-        // Vider le panier après confirmation
-        setPanier([]);
-      })
-      .catch((error) => {
-        console.error('Erreur lors de la confirmation du panier:', error);
-      });
+    localStorage.clear();
   };
 
   const handleSupprimerProduit = (id) => {
     // Supprimer un produit du panier
+    localStorage.removeItem(id);
     const nouveauPanier = panier.filter((produit) => produit.id !== id);
     setPanier(nouveauPanier);
   };
