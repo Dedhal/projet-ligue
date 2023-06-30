@@ -6,7 +6,7 @@ const Connexion = () => {
   const [email, setEmail] = useState('');
   const [motdePasse, setMotdePasse] = useState('');
 
-    axios.defaults.headers.common['Authorization'] = sessionStorage.token;
+    //axios.defaults.headers.common['Authorization'] = sessionStorage.token;
 
     const handleConnexion = () => {
         axios.post('http://localhost:5000/api/Users/login/', { params : { 'email' : email, 'password' : motdePasse} })
