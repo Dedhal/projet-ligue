@@ -55,8 +55,13 @@ const ListeProduits = () => {
         console.log(produitId);
         console.log(e.target.quantite.value);
 
+        if(localStorage.getItem(produitId)){
+            localStorage.setItem(produitId, parseInt(localStorage.getItem(produitId)) + parseInt(e.target.quantite.value));
+        }
+        else {
         localStorage.setItem(produitId, e.target.quantite.value);
         }
+   }
 
 
   return (
