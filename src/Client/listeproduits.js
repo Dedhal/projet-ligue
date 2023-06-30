@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -75,7 +75,7 @@ const ListeProduits = () => {
                 <input 
                     name="quantite"
                     type="number"
-                    placeholder="Quantit�"
+                    placeholder="Quantité"
                     value={getQuantite(produit._id)}
                     onChange={(e) => handleChange( produit._id, e )}
                 />
